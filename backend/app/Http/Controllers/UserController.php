@@ -44,7 +44,7 @@ class UserController extends Controller
     }
     
     public function favorite(){
-        $dataFriendsBlogger=Friends::get();
+        $dataFriendsBlogger=Friends::where('id_blogger',Auth::id())->get();
         return view('auth.blogger.friendslist', array("dataFriendsBlogger"=>$dataFriendsBlogger));
     }
     public function addFriend($id){

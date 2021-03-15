@@ -21,8 +21,8 @@
                         <p class="card-text">Web Site: {{$user->Data->email}}</p>
                     </div>
                     <div class="card-footer text-right">
-                        <button type="button" class="btn btn-primary mr-2"><i class="fas fa-eye"></i> Profile</button>                        
-                        <button type="button" class="btn btn-danger mr-2"><i class="fas fa-user-minus"></i> Delete</button>
+                        <a class="btn btn-primary mr-2" href="{{url('blogger/profile', array('id'=>$user->Data->id) )}}"><i class="fas fa-eye"></i> Profile</a>
+                        <a class="btn btn-danger mr-2" href="{{url('blogger/deleteFriend', array('id'=>$user->Data->id) )}}"><i class="fas fa-eye"></i> Delete</a>
                     </div>
                 </div>
                 @endforeach
