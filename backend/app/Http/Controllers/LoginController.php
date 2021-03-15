@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Auth;
+use App\Models\User;
+
 class LoginController extends Controller
 {
     public function view(){
@@ -11,7 +14,15 @@ class LoginController extends Controller
     }
 
     public function signin(Request $request){
-        echo $request->input("email");
-        //return redirect('blogger/list');
+        $email=$request->input("email");        
+        $idUser=  User::  select('id')->where('email',$email)->pluck('id');
+
+        if( count($idUser) > 0 ){
+            Auth::loginUsingId($idUser[0]);
+            return redirect('blogger/list');
+        }else{
+            redirect('logueo/view');
+        }
+
     }
 }

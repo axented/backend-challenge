@@ -85,13 +85,13 @@
             <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
             
             <label class="sr-only">Email address</label>
-            <input type="email" class="form-control" placeholder="Email address" required autofocus name="email">
+            <input type="email" class="form-control" name="email" placeholder="Email address" required autofocus minlength="5">
 
             <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 
             <input type="hidden" name="_token" value="{{csrf_token()}}">
 
-            <a href=""class="mt-5">Registrarme</a>
+            <a href="{{url('blogger/create')}}" class="mt-5">Registrarme</a>
 
         </form>        
   </body>
