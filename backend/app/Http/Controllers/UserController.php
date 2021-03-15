@@ -54,7 +54,12 @@ class UserController extends Controller
         $Friend->save();
         return redirect('blogger/favorite');
     }
-    public function deleteFriend($id){        
+    public function deleteFriend($id){
+        $Friend= Friends::where([
+            ['id_blogger',Auth::id()],
+            ['id_friend',$id]
+        ])->delete();
+        return redirect('blogger/favorite');
     }
 
 }
