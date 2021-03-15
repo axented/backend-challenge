@@ -28,4 +28,18 @@ class UserController extends Controller
         $dataBloggers=User::where('id', '!=' ,Auth::id())->get();        
         return view('auth.blogger.list', array("dataBloggers"=>$dataBloggers));
     }
+    public function profile($id){
+        $dataUser=User::find($id);
+        $dataFriend=Friends::select('id_friend')->where('id_blogger',$id)->get();
+        
+        $userAuth=Auth::id();
+        $isFriend=  Friends::where([
+                        ['id_blogger', $userAuth],
+                        ['id_friend', $id],
+                    ])->get();
+                    
+        $isFriend=count($isFriend);
+
+        return view('auth.blogger.profile',compact('dataUser','dataFriend','isFriend'));
+    }
 }
