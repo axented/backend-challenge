@@ -7,16 +7,16 @@
 
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
         <div class="navbar-nav mr-2">
-            <a class="nav-link" href="">
+            <a class="nav-link" href="{{url('blogger/list')}}">
                 <i class="fas fa-users"></i> Bloggers</a>
             
-            <a class="nav-link" href="">
+            <a class="nav-link" href="{{url('blogger/favorite')}}">
                 <i class="fas fa-users"></i> Favorite blogger</a>
 
-            <a class="nav-link" href="">
+            <a class="nav-link" href="{{url('blogger/profile',auth()->user()->id)}}">
                 <i class="fas fa-user"></i> My profile</a>
 
-            <a class="nav-link" href="">
+            <a class="nav-link" href="{{url('/')}}">
                 <i class="fas fa-sign-out-alt"></i> Sign out</a>
 
         </div>
