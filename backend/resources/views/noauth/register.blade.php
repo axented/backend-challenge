@@ -12,31 +12,33 @@
         <div class="row">
             <div class="col-12">
 
-                <form class="mt-5 shadow-lg p-3 mb-5 bg-white rounded">
+                <form class="mt-5 shadow-lg p-3 mb-5 bg-white rounded" method="POST" action="{{ url('blogger/store')}}">
                     
                     <h3>Register Blogger</h3>
                     
                     <div class="form-group">
                         <label>Nombre</label>
-                        <input type="text" class="form-control" name="name">
+                        <input type="text" class="form-control" name="name" placeholder="Ingrese el nombre" required minlength="5">
                     </div>
 
                     <div class="form-group">
                         <label>Email address</label>
-                        <input type="email" class="form-control" name="email">
+                        <input type="email" class="form-control" name="email" placeholder="Ingrese el email" required minlength="5">
                     </div>
 
                     <div class="form-group">
                         <label>Web site</label>
-                        <input type="text" class="form-control" name="website">
+                        <input type="text" class="form-control" name="website" placeholder="Ingrese el web site" required minlength="5">
                     </div>
 
                     <div class="form-group">
                         <label>Picture URL</label>
-                        <input type="text" class="form-control" name="picture_url">
+                        <input type="text" class="form-control" name="picture_url" placeholder="Ingrese la ruta de la imagen" required minlength="5">
                     </div>
 
                     <button type="submit" class="btn btn-primary btn-lg btn-block">Aceept</button>
+
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
 
                 </form>
 
@@ -46,7 +48,7 @@
         <div class=col-12>
             <ul class="nav justify-content-end">
                 <li class="nav-item">
-                    <a class="nav-link active" href="">Login</a>
+                    <a class="nav-link active" href="{{url('logueo/view')}}">Login</a>
                 </li>
             </ul>
         </div>
