@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +14,18 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::prefix('logueo')->group(function () {
+    Route::get('view', [LoginController::class, 'view']);
+    Route::post('signin', [LoginController::class, 'signin']);
+    Route::get('signout', [LoginController::class, 'signout']);
+});
 
-Route::get('/', function () {
-    return view('auth.blogger.friendslist');
+
+Route::group(['prefix'=>'blogger'],function(){
+    Route::get('create', [UserController::class, '']);
+    Route::post('store', [UserController::class, '']);
+    Route::get('list', [UserController::class, '']);
+    Route::get('favorite', [UserController::class, '']);
+    Route::get('profile', [UserController::class, '']);
+    Route::get('search', [UserController::class, '']);
 });
