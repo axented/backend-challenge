@@ -5,7 +5,7 @@
 @endsection
 
 @section('contenido')
-<div class="container mt-5">
+    <div class="container mt-5">
         <div class="row">
             <div class="col-7">
                 <img src="{{$dataUser->picture}}" class="img-fluid" alt="{{$dataUser->name}}">
@@ -15,7 +15,13 @@
                 <h3>Name: <small class="text-muted">{{$dataUser->name}}</small></h3>
                 <h3>Web site: <small class="text-muted">{{$dataUser->website}}</small></h3>
                 <h3>Email: <small class="text-muted">{{$dataUser->email}}</small></h3>
-                
+                @if($dataUser->id != auth()->user()->id)
+                    @if($isFriend > 0)                    
+                        <a href="{{url('blogger/deleteFriend', array('id'=>$dataUser->id) )}}" class="card-link"><i class="fas fa-eye"></i> Delete</a>
+                    @else
+                        <a href="{{url('blogger/addFriend', array('id'=>$dataUser->id) )}}" class="card-link"><i class="fas fa-eye"></i> Add</a>
+                    @endif
+                @endif
             </div>
         </div>
     </div>

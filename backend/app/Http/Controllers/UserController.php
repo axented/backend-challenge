@@ -42,4 +42,19 @@ class UserController extends Controller
 
         return view('auth.blogger.profile',compact('dataUser','dataFriend','isFriend'));
     }
+    
+    public function favorite(){
+        $dataFriendsBlogger=Friends::get();
+        return view('auth.blogger.friendslist', array("dataFriendsBlogger"=>$dataFriendsBlogger));
+    }
+    public function addFriend($id){
+        $Friend= new Friends();
+            $Friend->id_blogger=Auth::id();
+            $Friend->id_friend=$id;
+        $Friend->save();
+        return redirect('blogger/favorite');
+    }
+    public function deleteFriend($id){        
+    }
+
 }
