@@ -79,15 +79,20 @@
   </head>
   <body class="text-center">
     
-        <form class="form-signin">
+        <form class="form-signin" method="post" action="{{ url('logueo/signin') }}">
+
             <img class="mb-4" src="/login/profile.png" alt="" width="72" height="72">
             <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+            
             <label class="sr-only">Email address</label>
-            <input type="email" class="form-control" placeholder="Email address" required autofocus name="email">            
-            <div class="checkbox mb-3">            
-            </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>            
+            <input type="email" class="form-control" placeholder="Email address" required autofocus name="email">
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+
+            <input type="hidden" name="_token" value="{{csrf_token()}}">
+
             <a href=""class="mt-5">Registrarme</a>
+
         </form>        
   </body>
 </html>
