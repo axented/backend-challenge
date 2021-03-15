@@ -80,7 +80,7 @@
   <body class="text-center">
     
         <form class="form-signin">
-            <img class="mb-4" src="login/profile.png" alt="" width="72" height="72">
+            <img class="mb-4" src="/login/profile.png" alt="" width="72" height="72">
             <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
             <label class="sr-only">Email address</label>
             <input type="email" class="form-control" placeholder="Email address" required autofocus name="email">            
