@@ -17,12 +17,12 @@ use App\Http\Controllers\UserController;
 Route::prefix('logueo')->group(function () {
     Route::get('view',      [LoginController::class, 'view']);
     Route::post('signin',   [LoginController::class, 'signin']);
-    Route::get('signout',   [LoginController::class, 'signout']);
+    //Route::get('signout',   [LoginController::class, 'signout']);
 });
 
 
 Route::group(['prefix'=>'blogger'],function(){
-    Route::get('create',    [UserController::class, '']);
+    Route::get('create',    [UserController::class, 'create']);
     Route::post('store',    [UserController::class, '']);
     Route::get('list',      [UserController::class, '']);
     Route::get('favorite',  [UserController::class, '']);
