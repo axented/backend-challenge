@@ -24,8 +24,8 @@ Route::prefix('logueo')->group(function () {
 Route::group(['prefix'=>'blogger'],function(){
     Route::get('create',    [UserController::class, 'create']);
     Route::post('store',    [UserController::class, 'store']);
-    Route::get('list',      [UserController::class, '']);
+    Route::get('list',      [UserController::class, 'list']);
     Route::get('favorite',  [UserController::class, '']);
-    Route::get('profile',   [UserController::class, '']);
+    Route::get('profile',   [UserController::class, 'profile']);
     Route::get('search',    [UserController::class, '']);
 });

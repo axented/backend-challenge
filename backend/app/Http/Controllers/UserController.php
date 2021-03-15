@@ -24,4 +24,8 @@ class UserController extends Controller
         $User->save();
         return redirect('/logueo/view');
     }
+    public function list(){
+        $dataBloggers=User::where('id', '!=' ,Auth::id())->get();        
+        return view('auth.blogger.list', array("dataBloggers"=>$dataBloggers));
+    }
 }
