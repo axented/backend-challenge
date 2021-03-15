@@ -17,9 +17,9 @@
                 <h3>Email: <small class="text-muted">{{$dataUser->email}}</small></h3>
                 @if($dataUser->id != auth()->user()->id)
                     @if($isFriend > 0)                    
-                        <a href="{{url('blogger/deleteFriend', array('id'=>$dataUser->id) )}}" class="card-link"><i class="fas fa-eye"></i> Delete</a>
+                        <a href="{{url('blogger/deleteFriend', array('id'=>$dataUser->id) )}}" class="btn btn-danger mr-2"><i class="fas fa-eye"></i> Delete</a>
                     @else
-                        <a href="{{url('blogger/addFriend', array('id'=>$dataUser->id) )}}" class="card-link"><i class="fas fa-eye"></i> Add</a>
+                        <a href="{{url('blogger/addFriend', array('id'=>$dataUser->id) )}}" class="btn btn-primary mr-2"><i class="fas fa-eye"></i> Add</a>
                     @endif
                 @endif
             </div>
@@ -27,7 +27,7 @@
     </div>
 
     @if(count($dataFriend)==0)
-        <div class="container">
+        <div class="container mt-5">
             <h4 class="text-center">No friends added</h4>
         </div>
     @else
@@ -53,7 +53,7 @@
                         </div>
 
                         <div class="card-body text-right">
-                            <a href="{{url('blogger/profile', array('id'=>$dataFriend->Data->id) )}}" class="card-link"><i class="fas fa-eye"></i> Profile</a>
+                            <a href="{{url('blogger/profile', array('id'=>$dataFriend->Data->id) )}}" class="btn btn-primary mr-2"><i class="fas fa-eye"></i> Profile</a>
                         </div>
 
                     </div>
