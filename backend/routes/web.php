@@ -30,5 +30,5 @@ Route::group(['prefix'=>'blogger'],function(){
 
     Route::get('addFriend/{id}',   [UserController::class, 'addFriend'])->where('id', '[0-9]+');
     Route::get('deleteFriend/{id}',   [UserController::class, 'deleteFriend'])->where('id', '[0-9]+');
-    Route::get('search',    [UserController::class, '']);
+    Route::post('search',    [UserController::class, 'search']);
 });

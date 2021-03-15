@@ -20,9 +20,10 @@
                 <i class="fas fa-sign-out-alt"></i> Sign out</a>
 
         </div>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <form class="form-inline my-2 my-lg-0" method="POST" action="{{ url('blogger/search')}}">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
             <button class="btn btn btn-outline-light my-2 my-sm-0" type="submit"> <i class="fas fa-search"></i></button>
+            <input type="hidden" name="_token" value="{{csrf_token()}}">
         </form>
     </div>
 

@@ -61,5 +61,10 @@ class UserController extends Controller
         ])->delete();
         return redirect('blogger/favorite');
     }
+    public function search(Request $request){
+        $search=$request->input("search");
+        $User=User::where('name',$search)->orWhere('website',$search)->get();
+        echo $User;
+    }
 
 }
