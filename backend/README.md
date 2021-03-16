@@ -5,7 +5,7 @@
 </p>
 
 # Desafio Back-end
-_ API REST básica para administrar sus bloggers favoritos_
+_API REST básica para administrar sus bloggers favoritos_
 * Agrega un nuevo bloguero con su información.
 * Ver una lista de sus bloggers favoritos.
 * Asociar blogueros entre sí.
@@ -31,7 +31,7 @@ git clone https://github.com/migueled/backend-challenge.git
 ```
 composer install
 ```
-* Esto descargará e instalará las dependencias utilizadas por el proyecto. 
+_Esto descargará e instalará las dependencias utilizadas por el proyecto_
 * Situados en la carpeta desde la terminal ejecutamos
 ```
 cp .env.example .env
@@ -44,3 +44,9 @@ php artisan key:generate
 ```
 php artisan serve
 ```
+
+## Uso
+## Requisitos
+* Insomnia
+* Google Chrome
+## Instrucciones
