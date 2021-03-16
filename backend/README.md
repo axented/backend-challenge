@@ -50,3 +50,19 @@ php artisan serve
 * Insomnia
 * Google Chrome
 ## Instrucciones
+Consumimos las apis generadas en el proyecto usando insomina, ingresando la ruta generada al ejecutar php artisan serve, por lo general nos da la ruta de:
+```
+http://localhost:8000
+```
+_ejemplo de uso con insomnia_
+## api/logueo/signin
+_Para probar la api de api/logueo/signin: ingresamos en insomia_
+```
+http://localhost:8000/api/logueo/signin
+```
+_mandamos el siguiente formato json mediante el metodo POST_
+```
+{
+	"email":"miguel@gmail.com"
+}
+```
