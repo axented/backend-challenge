@@ -137,9 +137,11 @@ class UserController extends Controller {
                     [ 'id_friend'   ,$idDeleteFriend ]
                 ])->delete();
                 DB::commit();
-            }
 
-            return $this->responseJSON( 200 , 'ok' );
+                return $this->responseJSON( 200 , 'ok' );
+            }else{
+                return $this->responseJSON( 404 , 'Error' );
+            }
 
         } catch (\Exception $ex) {
             DB::rollBack();
