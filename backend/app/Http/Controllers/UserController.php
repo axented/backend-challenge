@@ -157,7 +157,7 @@ class UserController extends Controller {
             ]);
             
             $search = $request->input( "search" );
-            $User   = User::where( 'name' , $search )->orWhere( 'website' , $search )->get();
+            $User   = User::where( 'email' , $search )->orWhere( 'website' , $search )->get();
             return $this->responseDataJSON( 200 , $User );
 
         } catch (\Exception $ex) {
