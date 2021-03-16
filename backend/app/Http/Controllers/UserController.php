@@ -14,6 +14,13 @@ class UserController extends Controller {
     public function store( Request $request ){
         try {
 
+            $validatedData = $request->validate([
+                'name'          => ' required | min:1 ',
+                'email'         => ' required | email | min:1 ',
+                'website'       => ' required | min:1 ',
+                'picture_url'   => ' required | min:10 ',
+            ]);
+
             DB::beginTransaction();
                 $User= new User();
                     $User->name     =$request->input( "name" );
@@ -79,6 +86,11 @@ class UserController extends Controller {
     public function addFriend( Request $request ){
         try {
 
+            $validatedData = $request->validate([
+                'id_blogger'    => ' required | numeric ',
+                'id_friend'     => ' required | numeric',
+            ]);
+
             DB::beginTransaction();
             $idUserAuth     =$request->input( "id_blogger" );
             $idNewFriend    =$request->input( "id_friend" );
@@ -110,6 +122,11 @@ class UserController extends Controller {
     public function deleteFriend( Request $request ){
         try {
 
+            $validatedData = $request->validate([
+                'id_blogger'    => ' required | numeric ',
+                'id_friend'     => ' required | numeric',
+            ]);
+
             DB::beginTransaction();
             $idUserAuth  =$request->input( "id_blogger" );
             $idFriend    =$request->input( "id_friend" );
@@ -132,7 +149,11 @@ class UserController extends Controller {
 
     public function search( Request $request ){
         try {
-
+            
+            $validatedData  = $request->validate([
+                'search'    => ' required ',
+            ]);
+            
             $search = $request->input( "search" );
             $User   = User::where( 'name' , $search )->orWhere( 'website' , $search )->get();
             return $this->responderDataJSON( 200 , $User );

@@ -9,6 +9,10 @@ use App\Models\User;
 class LoginController extends Controller{
 
     public function signin( Request $request ){
+        $validatedData = $request->validate([
+            'email' => ' required | email |min:5'
+        ]);
+
         $email  =$request->input("email");
         $idUser =  User::  select( 'id' )->where( 'email',$email )->pluck( 'id' );
 
@@ -26,6 +30,10 @@ class LoginController extends Controller{
     }
 
     public function signout( Request $request ){
+        $validatedData = $request->validate([
+            'email' => ' required | email |min:5'
+        ]);
+
         $email  =$request->input("email");
         $idUser =  User::  select('id')->where('email',$email)->pluck('id');
 
