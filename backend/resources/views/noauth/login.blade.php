@@ -79,7 +79,7 @@
   </head>
   <body class="text-center">
     
-        <form class="form-signin" method="post" action="{{ url('logueo/signin') }}">
+        <form class="form-signin" method="post" action="{{ url('api/logueo/signin') }}">
 
             <img class="mb-4" src="/login/profile.png" alt="" width="72" height="72">
             <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
