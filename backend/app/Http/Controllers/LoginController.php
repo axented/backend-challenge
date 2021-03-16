@@ -16,12 +16,12 @@ class LoginController extends Controller{
             return json_encode(array(
                     'status'        => 200,
                     'response'      => array(
-                        'Mensaje'   => 'User Auth')));
+                        'Mensaje'   => 'ok')));
         }else{
             return json_encode(array(
                     'status'        => 400,
                     'response'      => array(
-                        'Mensaje'   => 'User No Auth')));
+                        'Mensaje'   => 'Error')));
         }
     }
 
@@ -33,7 +33,7 @@ class LoginController extends Controller{
             return json_encode(array(
                     'status'        => 200,
                     'response'      => array(
-                        'Mensaje'   => 'sign out')));
+                        'Mensaje'   => 'ok')));
         }else{
             return json_encode(array(
                     'status'        => 400,
