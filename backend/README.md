@@ -54,15 +54,28 @@ Consumimos las apis generadas en el proyecto usando insomina, ingresando la ruta
 ```
 http://localhost:8000
 ```
-_ejemplo de uso con insomnia_
 ## api/logueo/signin
-_Para probar la api de api/logueo/signin: ingresamos en insomia_
+* Para probar la api de api/logueo/signin: ingresamos en insomia
 ```
 http://localhost:8000/api/logueo/signin
 ```
-_mandamos el siguiente formato json mediante el metodo POST_
+* mandamos el siguiente formato json mediante el metodo POST
 ```
 {
 	"email":"miguel@gmail.com"
 }
 ```
+* Al enviar los datos nos mostrara en insomnia un mensaje de ok en caso contrario un mensaje de error
+
+## api/logueo/signout
+* Para probar la api de api/logueo/signout: ingresamos en insomia
+```
+http://localhost:8000/api/logueo/signout
+```
+* mandamos el siguiente formato json mediante el método POST
+```
+{
+    "email":"miguel@gmail.com"
+}
+```
+* Al enviar los datos nos mostrará en insomnia un mensaje de ok, en caso contrario un mensaje de error
