@@ -27,20 +27,20 @@ C:\wamp64\www
 ```
 git clone https://github.com/migueled/backend-challenge.git
 ```
-* Ingresar a la carpeta del proyecto y ejecutar
+* Ingresar a la carpeta del proyecto y ejecutar desde la terminal
 ```
 composer install
 ```
-Esto te descargará e instalará las dependencias utilizadas por el proyecto. 
+* Esto descargará e instalará las dependencias utilizadas por el proyecto. 
 * Situados en la carpeta desde la terminal ejecutamos
 ```
 cp .env.example .env
 ```
-* Generar la APP_KEY del proyecto ejecutando el siguiente comando
+* Generamos la APP_KEY del proyecto ejecutando el siguiente comando
 ```
 php artisan key:generate
 ```
-* Ahora ejecuta el comando desde la terminal para iniciar el servidor y despues abrir la ruta mostrada en la terminal
+* Ahora ejecutamos el comando desde la terminal para iniciar el servidor y despues abrir la ruta mostrada en la terminal
 ```
 php artisan serve
 ```
