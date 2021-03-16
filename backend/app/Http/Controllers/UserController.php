@@ -30,11 +30,11 @@ class UserController extends Controller {
                 $User->save();
             DB::commit();
 
-            return $this->responderJSON( 200 , 'ok' );
+            return $this->responseJSON( 200 , 'ok' );
 
         } catch (\Exception $ex) {
             DB::rollBack();
-            return $this->responderJSON( 404 , 'Error' );
+            return $this->responseJSON( 404 , 'Error' );
         }
     }
 
@@ -43,13 +43,13 @@ class UserController extends Controller {
 
             if ($idUserAuth > 0) {
                 $dataBloggers = User::where( 'id' , '!=' , $idUserAuth )->get();
-                return $this->responderDataJSON( 200 , $dataBloggers );
+                return $this->responseDataJSON( 200 , $dataBloggers );
             }else{
-                return $this->responderDataJSON( 404 , 'Error' );
+                return $this->responseDataJSON( 404 , 'Error' );
             }
 
         } catch (\Exception $ex) {
-            return $this->responderJSON( 500, 'Error');
+            return $this->responseJSON( 500, 'Error');
         }
     }
 
@@ -59,13 +59,13 @@ class UserController extends Controller {
             if ( $id > 0 ) {
                 $dataUser   = User::find( $id );
                 $dataFriend =Friends::select( 'id_friend' )->where( 'id_blogger' , $id )->get();
-                return $this->responderDataProfileJSON( 200 , $dataUser , $dataFriend );
+                return $this->responseDataProfileJSON( 200 , $dataUser , $dataFriend );
             }else{
-                return $this->responderDataJSON( 404 , 'Error' );
+                return $this->responseDataJSON( 404 , 'Error' );
             }
 
         } catch (\Exception $ex) {
-            return $this->responderJSON( 500 , 'Error' );
+            return $this->responseJSON( 500 , 'Error' );
         }
     }
     
@@ -74,13 +74,13 @@ class UserController extends Controller {
 
             if ( $idUserAuth > 0 ) {
                 $dataFriendsBlogger = Friends::select( 'id_friend' )->where( 'id_blogger' , $idUserAuth )->get();
-                return $this->responderDataJSON( 200 , $dataFriendsBlogger );
+                return $this->responseDataJSON( 200 , $dataFriendsBlogger );
             }else{
-                return $this->responderDataJSON( 404 , 'Error' );
+                return $this->responseDataJSON( 404 , 'Error' );
             }
 
         } catch (\Exception $ex) {
-            return $this->responderJSON( 500 , 'Error' );
+            return $this->responseJSON( 500 , 'Error' );
         }
     }
     public function addFriend( Request $request ){
@@ -107,15 +107,15 @@ class UserController extends Controller {
                     $Friend->id_friend  = $idNewFriend;
                 $Friend->save();
                 DB::commit();
-                return $this->responderJSON( 200 , 'ok' );
+                return $this->responseJSON( 200 , 'ok' );
 
             }else{
-                return $this->responderJSON( 404 , 'Error' );
+                return $this->responseJSON( 404 , 'Error' );
             }
 
         } catch (\Exception $ex) {
             DB::rollBack();
-            return $this->responderJSON( 505 , 'Error' );
+            return $this->responseJSON( 505 , 'Error' );
         }
     }
 
@@ -128,22 +128,22 @@ class UserController extends Controller {
             ]);
 
             DB::beginTransaction();
-            $idUserAuth  =$request->input( "id_blogger" );
-            $idFriend    =$request->input( "id_friend" );
+            $idUserAuth         =$request->input( "id_blogger" );
+            $idDeleteFriend     =$request->input( "id_friend" );
 
-            if ( $idUserAuth > 0 && $idFriend > 0 ) {
+            if ( $idUserAuth > 0 && $idDeleteFriend > 0 ) {
                 $Friend = Friends::where([
                     [ 'id_blogger'  ,$idUserAuth ],
-                    [ 'id_friend'   ,$idFriend ]
+                    [ 'id_friend'   ,$idDeleteFriend ]
                 ])->delete();
                 DB::commit();
             }
 
-            return $this->responderJSON( 200 , 'ok' );
+            return $this->responseJSON( 200 , 'ok' );
 
         } catch (\Exception $ex) {
             DB::rollBack();
-            return $this->responderJSON( 505 , 'Error' );
+            return $this->responseJSON( 505 , 'Error' );
         }
     }
 
@@ -156,31 +156,31 @@ class UserController extends Controller {
             
             $search = $request->input( "search" );
             $User   = User::where( 'name' , $search )->orWhere( 'website' , $search )->get();
-            return $this->responderDataJSON( 200 , $User );
+            return $this->responseDataJSON( 200 , $User );
 
         } catch (\Exception $ex) {
-            return $this->responderJSON( 505 , 'Error' );
+            return $this->responseJSON( 505 , 'Error' );
         }
     }
     /*----------------------------------------------*/
-    public function responderJSON( $codigo , $mensaje ){
+    public function responseJSON( $responseHTTP , $message ){
         return json_encode(array(
-            'status'        => $codigo,
-            'response'      => $mensaje
+            'status'        => $responseHTTP,
+            'response'      => $message
         ));
     }
 
-    public function responderDataJSON( $codigo, $Data ){
+    public function responseDataJSON( $responseHTTP, $Data ){
         return json_encode(array(
-            'status'            => $codigo,
+            'status'            => $responseHTTP,
             'response'          => array(
-                'Data'          => $mensaje
+                'Data'          => $Data
             )));
     }
 
-    public function responderDataProfileJSON( $codigo, $DataProfile, $listFriends ){
+    public function responseDataProfileJSON( $responseHTTP, $DataProfile, $listFriends ){
         return json_encode(array(
-            'status'            => $codigo,
+            'status'            => $responseHTTP,
             'response'          => array(
                 'dataProfile'   =>$DataProfile,
                 'listFriends'   =>$listFriends
